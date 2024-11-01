@@ -50,7 +50,7 @@ if __name__ == '__main__':
     trainer_paras = config['TrainerParas']
     if torch.cuda.is_available():
         trainer_paras.update({'gpus':1})
-    trainer_paras.update({'default_root_dir': root_dir})
+    trainer_paras.update({'accelerator': 'gpu', 'devices': 1})
     LoggerClass = get_class_object(pl_loggers, config['TrainLoggerName']) 
     if LoggerClass == pl_loggers.WandbLogger:
         # wandb.init(settings=wandb.Settings(start_method="fork"))
